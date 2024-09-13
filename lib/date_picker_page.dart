@@ -34,15 +34,24 @@ class _DatePickerPageState extends State<DatePickerPage> {
                           child: Text('Sair'),
                         ),
                         Expanded(
-                          child: CupertinoDatePicker(
-                            initialDateTime: _dataSelecionada,
-                            mode: CupertinoDatePickerMode.date,
-                            maximumDate: DateTime.now(),
-                            onDateTimeChanged: (date){
-                              setState(() {
-                                _dataSelecionada = date;
-                              });
-                            }
+                          child: CupertinoTheme(
+                            data: CupertinoThemeData(
+                              textTheme: CupertinoTextThemeData(
+                              dateTimePickerTextStyle: TextStyle(fontSize: 21),
+                              ),
+                            ),
+                            child: CupertinoDatePicker(
+                              initialDateTime: _dataSelecionada,
+                              mode: CupertinoDatePickerMode.date,
+                              maximumDate: DateTime.now(),
+                              dateOrder: DatePickerDateOrder.ymd,
+                              itemExtent: 50,
+                              onDateTimeChanged: (date){
+                                setState(() {
+                                  _dataSelecionada = date;
+                                });
+                              }
+                            ),
                           )
                         )
                       ],
